@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>登录 tryboot</title>
+    <link rel="stylesheet" href="http://47.107.38.165:8081/css/auth.css">
+</head>
+
+<body>
+<div class="lowin">
+    <div class="lowin-brand">
+        <img src="http://47.107.38.165:8081/favicon.ico" alt="logo">
+    </div>
+    <div class="lowin-wrapper">
+        <div class="lowin-box lowin-login">
+            <div class="lowin-box-inner">
+                <form>
+                    <p>Sign in to continue</p>
+                    <div class="lowin-group">
+                        <label>Email </label>
+                        <label>
+                            <input id="login-email" type="email" name="email" class="lowin-input">
+                        </label>
+                    </div>
+                    <div class="lowin-group password-group">
+                        <label>Password <a href="#" class="forgot-link">Forgot Password?</a></label>
+                        <label>
+                            <input id="login-password" type="password" name="password" class="lowin-input">
+                        </label>
+                    </div>
+                    <button onclick="dologin()" class="lowin-btn" type="button">
+                        Sign In
+                    </button>
+
+                    <div class="text-foot">
+                        Don't have an account? <a href="" class="register-link">Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="lowin-box lowin-register">
+            <div class="lowin-box-inner">
+                <form>
+                    <p>Let's create your account</p>
+                    <div class="lowin-group">
+                        <label>Name</label>
+                        <label>
+                            <input id="signup-name" type="text" name="name" class="lowin-input">
+                        </label>
+                    </div>
+                    <div class="lowin-group">
+                        <label>Email</label>
+                        <label>
+                            <input id="signup-email" type="email" name="email" class="lowin-input">
+                        </label>
+                    </div>
+                    <div class="lowin-group">
+                        <label>Password</label>
+                        <label>
+                            <input id="signup-password" type="password" name="password" class="lowin-input">
+                        </label>
+                    </div>
+                    <button class="lowin-btn" type="button">
+                        Sign Up
+                    </button>
+
+                    <div class="text-foot">
+                        Already have an account? <a href="" class="login-link">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="lowin-footer">
+    </footer>
+</div>
+
+<script src="http://47.107.38.165:8081/js/auth.js"></script>
+<script src="http://47.107.38.165:8081/jquery/jquery-2.1.1.min.js"></script>
+<script src="http://47.107.38.165:8081/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://47.107.38.165:8081/layer/layer.js"></script>
+
+<script>
+    Auth.init();
+    function dologin() {
+        //字符串非空校验
+        var email = $("#login-email").val();
+        if (email === "") {
+            layer.msg("用户账号不能为空，请输入", {time: 1000, icon: 0, shift: 5});
+            return;
+        }
+        var password = $("#login-password").val();
+        if (password === "") {
+            layer.msg("登录密码不能为空，请输入", {time: 1000, icon: 0, shift: 5});
+            return;
+        }
+
+        var holder = null;
+        //提交表单
+        $.ajax({
+            type: "POST",
+            url: "doLogin",
+            data: {
+                email: email,
+                password: password
+            },
+            beforeSend: function () {
+                holder = layer.msg("处理中", {icon: 16});
+            },
+            success: function (result) {
+                layer.close(holder);
+                if (result === true) {
+                    window.location.href = "admin";
+                } else {
+                    layer.msg("用户信息不存在或密码错误", {time: 1000, icon: 2, shift: 6});
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
