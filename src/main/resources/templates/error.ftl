@@ -21,7 +21,7 @@
     <div id="ticket">
         <section id="ticket_left">
             <p class="text1_a">Lost in the clouds</p>
-            <p class="text2_a">Flight ${error}</p>
+            <p class="text2_a">${error}</p>
             <p class="text3_a">Error ${status}</p>
             <p class="text4_a">Sorry!</p>
             <p class="text5_a">From</p>
