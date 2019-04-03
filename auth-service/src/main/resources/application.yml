@@ -1,0 +1,9 @@
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
+oauth2:
+  server:
+    client-secret:
+      account-service: radon
