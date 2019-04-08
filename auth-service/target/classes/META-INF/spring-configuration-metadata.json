@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "security.oauth2.server",
+      "type": "fre.shown.security.config.Oauth2ServerClientsProperties",
+      "sourceType": "fre.shown.security.config.Oauth2ServerClientsProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "security.oauth2.server.clients",
+      "type": "java.util.Map<java.lang.String,fre.shown.security.config.Oauth2ServerClientsProperties.Oauth2ClientProperties>",
+      "sourceType": "fre.shown.security.config.Oauth2ServerClientsProperties"
+    }
+  ],
+  "hints": []
+}

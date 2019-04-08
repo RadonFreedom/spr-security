@@ -1,0 +1,11 @@
+server:
+  port: 8079
+
+security:
+  oauth2:
+    client:
+      client-id: account-service
+      client-secret: radon
+      access-token-uri: http://localhost:8080/oauth/token
+      grant-type: client_credentials
+      scope: server

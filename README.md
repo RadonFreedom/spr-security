@@ -15,8 +15,8 @@ v2.0版本使用Spring Security实现了Oauth2三种模式.
   流程复杂, 不仅需要用户认证, 还需要客户端提供 `client_id` 和 `client_secret` .
 
 - 用户密码模式 (Resource Owner Password Credentials Grant): 本方前端UI获取后台资源.
-
-  仅需要用户认证即可获取 `token`.
+__
+  仅需要一次性的用户认证和客户端认证即可获取 `token`.
 
 - 客户端认证模式 (Client Credentials Grant): 后端微服务之间REST API相互调用获取资源.
 
@@ -24,4 +24,5 @@ v2.0版本使用Spring Security实现了Oauth2三种模式.
 
 
 
-认证流程的细节内容请参见 Spring security笔记.
+认证流程的细节内容请参见 [Spring security笔记](https://github.com/RadonFreedom/notes/blob/master/spring/Spring%20Security.md).
+
