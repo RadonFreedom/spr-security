@@ -28,11 +28,14 @@ v2.0版本使用Spring Security实现了Oauth2三种模式.
 
 
 
-## 使用yml自定义Oauth2客户端配置
+## 使用yml自定义Oauth2客户端认证信息
 
 **为了能够方便配置客户端认证信息, 实现配置信息和java代码解耦, 打算从yml配置中装载 Oauth2 认证服务器对客户端认证信息的配置.**
 
-**我写的`Oauth2ServerClientsProperties`, 用来装载在yml中配置的客户端认证信息.**
+**`Oauth2ServerClientsProperties`, 用来装载在yml中配置的客户端认证信息.**
+
+> 用于从yml配置中装载 Oauth2 认证服务器对客户端认证信息的配置.
+>
 
 ```JAVA
 @ConfigurationProperties(prefix = "security.oauth2.server")
@@ -78,7 +81,7 @@ public class Oauth2ServerClientsProperties {
 
 ```
 
-**对应的yml配置也可以当做以后的范本**:
+**对应的yml配置**:
 
 ```YML
 security:

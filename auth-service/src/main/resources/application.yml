@@ -5,7 +5,7 @@ logging:
 security:
   oauth2:
     server:
-      enable-jwt-token: true
+      enable-jwt-token: false
 
       clients:
         # 客户端名, 这个名字是无用的, 最后只会取值
@@ -34,12 +34,3 @@ security:
             - client_credentials
             - refresh_token
           scopes: server
-
-
-    authorization:
-      jwt:
-        key-value: a
-        key-alias:
-        key-store:
-        key-store-password:
-        key-password:
