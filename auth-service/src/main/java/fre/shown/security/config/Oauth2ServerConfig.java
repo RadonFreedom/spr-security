@@ -41,7 +41,6 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
         this.tokenStore = tokenStore;
     }
 
-
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
         oauthServer
@@ -73,7 +72,7 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
             if (client.getAccessTokenValiditySeconds() != null) {
                 builder.accessTokenValiditySeconds(client.getAccessTokenValiditySeconds());
             }
-            if (client.getAccessTokenValiditySeconds() != null) {
+            if (client.getRefreshTokenValiditySeconds() != null) {
                 builder.refreshTokenValiditySeconds(client.getRefreshTokenValiditySeconds());
             }
         }
@@ -89,10 +88,14 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
                 .authenticationManager(authenticationManager);
     }
 
-    @ConditionalOnProperty(name = "security.oauth2.server.enable-jwt-token", havingValue = "false")
-    @Bean
-    @Autowired
-    public RedisTokenStore redisTokenStore(RedisConnectionFactory redisConnectionFactory) {
-        return new RedisTokenStore(redisConnectionFactory);
+    @Configuration
+    public static class TokenStoreConfig {
+
+        @ConditionalOnProperty(name = "security.oauth2.server.enable-jwt-token", havingValue = "false")
+        @Bean
+        @Autowired
+        public TokenStore redisTokenStore(RedisConnectionFactory redisConnectionFactory) {
+            return new RedisTokenStore(redisConnectionFactory);
+        }
     }
 }

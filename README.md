@@ -151,7 +151,7 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
             if (client.getAccessTokenValiditySeconds() != null) {
                 builder.accessTokenValiditySeconds(client.getAccessTokenValiditySeconds());
             }
-            if (client.getAccessTokenValiditySeconds() != null) {
+            if (client.getRefreshTokenValiditySeconds() != null) {
                 builder.refreshTokenValiditySeconds(client.getRefreshTokenValiditySeconds());
             }
         }
